@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <style>
+        tr,td{
+            height: 30px;
+            line-height: 30px;
+        }
+        tr{
+            border: 1px #00B7FF solid;
+        }
+        td{
+            padding-left: 20px;
+            padding-right: 20px;
+            border: 1px solid #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+<table>
+
+</table>
+<script>
+    $(function(){
+        $.ajax({
+            url:'http://localhost:3000',
+            type:'POST',
+            success:function(e){
+                console.log(e)
+                var wqe='';
+                for(var i=0;i<e.length;i++){
+                    wqe+='<tr>'+ '<td>' +e[i].id+'</td>' +'<td>' + e[i].name +'</td>'+'<td>' + e[i].age +'</td>'+'</tr>'
+                }
+                $('table').html(wqe)
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
